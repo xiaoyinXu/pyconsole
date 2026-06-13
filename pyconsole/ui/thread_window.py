@@ -13,9 +13,15 @@ class ThreadWindow(tk.Toplevel):
         self._threads: list[ThreadInfo] = []
 
         self.title(f"PyConsole — PID {process.pid}")
-        self.geometry("900x600")
+        self.attributes("-topmost", True)
         self._build_ui()
         self._refresh()
+        self.update_idletasks()
+        w = self.winfo_reqwidth()
+        h = self.winfo_reqheight()
+        x = (self.winfo_screenwidth() - w) // 2
+        y = (self.winfo_screenheight() - h) // 2
+        self.geometry(f"+{x}+{y}")
 
     def _build_ui(self):
         toolbar = ttk.Frame(self)

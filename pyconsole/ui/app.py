@@ -10,8 +10,14 @@ class App:
     def __init__(self):
         self._root = tk.Tk()
         self._root.title("PyConsole — Python Thread Inspector")
-        self._root.geometry("600x500")
+        self._root.attributes("-topmost", True)
         self._build_ui()
+        self._root.update_idletasks()
+        w = self._root.winfo_reqwidth()
+        h = self._root.winfo_reqheight()
+        x = (self._root.winfo_screenwidth() - w) // 2
+        y = (self._root.winfo_screenheight() - h) // 2
+        self._root.geometry(f"+{x}+{y}")
 
     def _build_ui(self):
         self._process_panel = ProcessPanel(self._root, on_attach=self._on_attach)
