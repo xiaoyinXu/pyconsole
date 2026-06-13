@@ -25,15 +25,35 @@ This approach requires no instrumentation of the target process — it works on 
 
 - macOS (uses `lldb` which ships with Xcode Command Line Tools)
 - Python 3.10+ with `tkinter` compiled in
+- [uv](https://github.com/astral-sh/uv) package manager
 - Developer mode enabled: `sudo DevToolsSecurity -enable`
 
-> **Note:** The pyenv-installed Python on this machine lacks `_tkinter`. Use the system Python 3.12 to run the GUI.
-
-## Usage
+## Installation & Usage
 
 ```bash
-/Library/Frameworks/Python.framework/Versions/3.12/Resources/Python.app/Contents/MacOS/Python run.py
+# Clone
+git clone https://github.com/xiaoyinXu/pyconsole.git
+cd pyconsole
+
+# Create venv with a Python that has tkinter (e.g. python.org framework build)
+uv venv --python /Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12
+
+# Install
+uv pip install -e .
+
+# Run
+.venv/bin/pyconsole
 ```
+
+Or run directly without installing:
+
+```bash
+uv run --python /Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12 pyconsole
+```
+
+> **Note:** Homebrew and pyenv Python builds often lack `_tkinter`. Use the [python.org](https://www.python.org/downloads/) framework installer which includes Tk.
+
+### Steps
 
 1. The main window shows all running Python processes
 2. Use the filter box to search by keyword

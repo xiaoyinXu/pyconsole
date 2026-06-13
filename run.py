@@ -1,4 +1,4 @@
-#!/Library/Frameworks/Python.framework/Versions/3.12/Resources/Python.app/Contents/MacOS/Python
+#!/usr/bin/env python3
 from pyconsole.main import main
 
 if __name__ == "__main__":
