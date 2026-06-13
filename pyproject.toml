@@ -3,7 +3,9 @@ name = "pyconsole"
 version = "0.1.0"
 description = "A JConsole-like GUI tool for inspecting running Python processes"
 requires-python = ">=3.10"
-dependencies = []
+dependencies = [
+    "pytk>=0.0.2.1",
+]
 
 [project.scripts]
 pyconsole = "pyconsole.main:main"
